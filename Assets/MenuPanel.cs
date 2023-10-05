@@ -55,7 +55,7 @@ public class MenuPanel : MonoBehaviour
     {
         //SoundManager.PlaySfx(_soundManager.soundClick);
 
-        SceneManager.LoadScene("Game");
+        //SceneManager.LoadScene("Game");
     }
 
     private void AnimateTapToPlayImage()
