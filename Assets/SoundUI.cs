@@ -28,7 +28,7 @@ public class SoundUI : MonoBehaviour
     public void TurnSound()
     {
 
-        setSound(!boolSoundOn, true);
+        setSound(!boolSoundOn, false);
 
     }
 
@@ -46,7 +46,7 @@ public class SoundUI : MonoBehaviour
             PlayerPrefs.SetInt("soundOn", 1);
             SoundManager.MusicVolume = 1;
             SoundManager.SoundVolume = 1;
-            SoundManager.PlaySfx(soundManager.soundClick);
+            //SoundManager.PlaySfx(soundManager.soundClick);
         }
 
         else
@@ -58,6 +58,6 @@ public class SoundUI : MonoBehaviour
             SoundManager.SoundVolume = 0;
         }
 
-        SoundManager.PlaySfx(soundManager.soundClick, 1f);
+       // SoundManager.PlaySfx(soundManager.soundClick, 1f);
     }
 }

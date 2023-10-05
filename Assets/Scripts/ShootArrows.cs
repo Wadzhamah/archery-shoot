@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ShootArrows : MonoBehaviour
 {
@@ -31,6 +32,12 @@ public class ShootArrows : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Проверка, не нажата ли кнопка мыши над UI элементами
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        {
+            return; // Ничего не делаем, если нажатие происходит над UI элементами
+        }
+
         if (GameManager.gameStarted)
         {
             if (Input.GetMouseButtonDown(0))
@@ -82,12 +89,17 @@ public class ShootArrows : MonoBehaviour
     {
         bowAnimator.SetBool("drawing", false);
 
-        GameObject arrow = Instantiate(arrowPrefab, arrowTransform.position, arrowTransform.rotation) as GameObject;
-        arrow.GetComponent<Rigidbody>().AddForce(arrowTransform.forward * currentArrowForce);
+        // Проверка продолжительности нажатия на кнопку мыши
+        if (currentLerpTime >= maxLerpTime * 0.5f) // Например, считаем, что половина времени лерпа достаточно
+        {
+            GameObject arrow = Instantiate(arrowPrefab, arrowTransform.position, arrowTransform.rotation) as GameObject;
+            arrow.GetComponent<Rigidbody>().AddForce(arrowTransform.forward * currentArrowForce);
+        }
 
         currentLerpTime = 0;
         currentArrowForce = 0;
-        
+
         bowStretchSound.Stop();
     }
+
 }

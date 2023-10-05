@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     private Button playButton;
 
     [SerializeField] 
-    private float gameLengthInSeconds = 10f;
+    private float gameLengthInSeconds = 0;
 
     [SerializeField]
     private TextMeshProUGUI scoreText;
@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Cursor.lockState = CursorLockMode.Confined;
         if (!gameStarted && Input.GetKeyDown(KeyCode.Space))
         {
             //StartGame();

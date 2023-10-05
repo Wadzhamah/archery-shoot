@@ -27,13 +27,13 @@ public class SoundManager : MonoBehaviour
     //GET and SET
     public static float MusicVolume
     {
-        set { Instance.musicAudio.volume = value; }
-        get { return Instance.musicAudio.volume; }
+        set { AudioListener.volume = value; }
+        get { return AudioListener.volume; }
     }
     public static float SoundVolume
     {
-        set { Instance.soundFx.volume = value; }
-        get { return Instance.soundFx.volume; }
+        set { AudioListener.volume = value; }
+        get { return AudioListener.volume; }
     }
     // Use this for initialization
     void Awake()
@@ -43,6 +43,7 @@ public class SoundManager : MonoBehaviour
         musicAudio.loop = true;
         musicAudio.volume = 0.5f;
         soundFx = gameObject.AddComponent<AudioSource>();
+
     }
     void Start()
     {

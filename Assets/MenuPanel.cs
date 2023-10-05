@@ -51,17 +51,19 @@ public class MenuPanel : MonoBehaviour
         Debug.Log(GlobalVariables.UserName);
     }
 
-    private void OnPlayButtonClick()
+    public void OnPlayButtonClick()
     {
         //SoundManager.PlaySfx(_soundManager.soundClick);
 
-        //SceneManager.LoadScene("Game");
+        if (SceneManager.GetActiveScene().name != "Game")
+        {
+            SceneManager.LoadScene("Loading");
+        }
     }
 
     private void AnimateTapToPlayImage()
     {
-        _tapToPlayImage.DOColor(new Color(1f, 1f, 1f, 0.25f), 1f) // Змінює колір тексту на прозорий за 1 секунду.
-            .SetLoops(-1, LoopType.Yoyo); // Запускає зациклення анімації, щоб текст блимав вперед і назад.
+        
     }
 
     private void OnInfoButtonClick()
